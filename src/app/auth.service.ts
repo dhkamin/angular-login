@@ -7,7 +7,6 @@ export class AuthService {
 
    }
 
-
   isLoggedIn() {
    if (localStorage.getItem('login')) {
      console.log('return true');
@@ -20,5 +19,9 @@ export class AuthService {
 
   login() {
     localStorage.setItem('login', 'true');
+    return this.isLoggedIn();
+  }
+  logout(){
+    localStorage.removeItem('login');
   }
 }

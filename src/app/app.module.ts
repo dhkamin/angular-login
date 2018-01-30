@@ -11,6 +11,7 @@ import { MaterialModule } from './material.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { LoginGuardGuard } from './login-guard.guard';
 import { AuthService } from './auth.service';
+import { RouterModule, Routes } from '@angular/router';
 
 
 @NgModule({
@@ -18,13 +19,15 @@ import { AuthService } from './auth.service';
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RouterModule
   ],
   providers: [LoginGuardGuard, AuthService],
   bootstrap: [AppComponent]
