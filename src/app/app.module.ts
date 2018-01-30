@@ -9,6 +9,8 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { MaterialModule } from './material.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { LoginGuardGuard } from './login-guard.guard';
+import { AuthService } from './auth.service';
 
 
 @NgModule({
@@ -24,7 +26,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MaterialModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [LoginGuardGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
