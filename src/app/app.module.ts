@@ -12,6 +12,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { LoginGuardGuard } from './login-guard.guard';
 import { AuthService } from './auth.service';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 
 @NgModule({
@@ -27,7 +29,10 @@ import { RouterModule, Routes } from '@angular/router';
     AppRoutingModule,
     MaterialModule,
     BrowserAnimationsModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpModule
   ],
   providers: [LoginGuardGuard, AuthService],
   bootstrap: [AppComponent]

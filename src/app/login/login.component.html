@@ -1,18 +1,26 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title><h1>Login</h1></mat-card-title>
-  </mat-card-header>
-  <div class="inputform">
+<div class="basic-container">
+  <form [formGroup]="userForm" class="form-test" (ngSubmit)="onClickLogin(userForm.value)">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <h1>Login</h1>
+        </mat-card-title>
+      </mat-card-header>
+      <div class="inputform">
 
-    <mat-input-container floatPlaceholder="auto">
-      <input matInput formControlName="formControlName" type="text" required placeholder="email">
-    </mat-input-container>
+        <mat-input-container floatPlaceholder="auto">
+          <input matInput formControlName="email" type="text" required placeholder="email">
+        </mat-input-container>
 
-    <mat-input-container floatPlaceholder="auto">
-      <input matInput formControlName="formControlName" type="password" required placeholder="password">
-    </mat-input-container>
+        <mat-input-container floatPlaceholder="auto">
+          <input matInput formControlName="password" type="password" required placeholder="password">
+        </mat-input-container>
 
-    <button mat-button (click)="onClickLogin()">Login</button>
-    <button mat-button routerLink="/register">Register</button>
-  </div>
-</mat-card>
+        <mat-error *ngIf="errMessage">{{errMessage}}</mat-error>
+
+        <button mat-button (click)="onClickLogin(userForm.value)">Login</button>
+        <button mat-button routerLink="/register">Register</button>
+      </div>
+    </mat-card>
+  </form>
+</div>

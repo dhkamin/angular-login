@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
+
 
 @Component({
   selector: 'app-login',
@@ -9,15 +12,32 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService,private router: Router) { }
+  userForm: FormGroup;
+
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+    this.userForm = fb.group(
+      {
+        'email': ['', [Validators.email, Validators.required]],
+        'password': ['', Validators.minLength(8)]
+      }
+    );
+  }
+
+  errMessage;
 
   ngOnInit() {
   }
 
   onClickLogin() {
-    if(this.authService.login()){
-      this.router.navigateByUrl('');
-    }
+    this.authService.login(this.userForm.value)
+      .subscribe((res) => {
+        if (res === true) {
+          this.router.navigateByUrl('');
+        } else {
+          this.errMessage = res;
+        }
+      });
+
   }
 
 }
