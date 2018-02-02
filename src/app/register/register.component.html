@@ -1,23 +1,29 @@
 <div class="basic-container">
+  <form [formGroup]="registerForm" (ngSubmit)="onClickRegister(registerForm.value)">
 
-<mat-card>
-    <mat-card-header>
-      <mat-card-title><h1>Register</h1></mat-card-title>
-    </mat-card-header>
-    <div class="inputform">
+    <mat-card>
+      <mat-card-header>
+        <h1 class="title">
+          Register
+        </h1>
+      </mat-card-header>
+      <div class="inputform">
 
-      <mat-input-container floatPlaceholder="auto">
-        <input matInput formControlName="formControlName" type="text" required placeholder="email">
-      </mat-input-container>
-      <mat-input-container floatPlaceholder="auto">
-          <input matInput formControlName="formControlName" type="password" required placeholder="password">
+        <mat-input-container floatPlaceholder="auto">
+          <input matInput formControlName="email" type="text" required placeholder="email">
+        </mat-input-container>
+        <mat-input-container floatPlaceholder="auto">
+          <input matInput formControlName="password" type="password" required placeholder="password">
         </mat-input-container>
 
         <mat-input-container floatPlaceholder="auto">
-            <input matInput formControlName="formControlName" type="password" required placeholder="Confirm">
-          </mat-input-container>
-      <button mat-button (click)="onClickRegister()">Register</button>
-      <button mat-button routerLink="/login">You already have an account ?</button>
-    </div>
-  </mat-card>
+          <input matInput formControlName="Confirm" type="password" required placeholder="Confirm">
+        </mat-input-container>
+        <div class="button-row">
+          <button mat-raised-button routerLink="/login">You already have an account ?</button>
+          <button mat-raised-button color="primary" type="submit" (click)="onClickRegister()">Register</button>
+        </div>
+      </div>
+    </mat-card>
+  </form>
 </div>

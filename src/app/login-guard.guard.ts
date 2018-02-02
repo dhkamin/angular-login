@@ -8,15 +8,14 @@ import { AuthService } from './auth.service';
 @Injectable()
 export class LoginGuardGuard implements CanActivate {
 
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(private router: Router, private authService: AuthService) { }
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     if (this.authService.isLoggedIn()) {
-      console.log(this.authService.isLoggedIn());
       return true;
-    } else {
-      this.router.navigateByUrl('login');
-      return false;
     }
+    this.router.navigateByUrl('login');
+    return false;
+
   }
 }
