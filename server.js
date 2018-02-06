@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const auth = require('./server/routing/auth')
+const task = require('./server/routing/task')
 const bodyparser = require('body-parser');
 const cors = require('cors');
 
@@ -17,6 +18,7 @@ app.use(bodyparser.urlencoded({extended:true}));
 app.use(express.static(__dirname+"/dist"))
 
 app.use('/auth',auth);
+app.use('/task',task);
 
 app.get('*',(req,res,next)=>{
   res.sendFile(__dirname+'/dist/index.html');

@@ -43,7 +43,7 @@ router.post('/login',(req,res,next)=>{
       else if(result.password == req.body.password){
         const payload = {id: result._id};
         const token = jwt.sign(payload, jwtOptions.secretOrKey) ;
-        res.send({message: "ok",  "token" : token });
+        res.send({message: "ok",  "token" : token , data : req.body});
 
       }else{
         res.send({message:"wrong password"});
@@ -51,5 +51,7 @@ router.post('/login',(req,res,next)=>{
     })
   })
 })
+
+
 
 module.exports = router;
