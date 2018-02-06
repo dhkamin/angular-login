@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
@@ -9,25 +9,28 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  myGroup: FormGroup;
 
-  registerForm: FormGroup;
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
-
-    this.registerForm = fb.group(
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { 
+    this.myGroup = fb.group(
       {
         'email': ['', [Validators.email, Validators.required]],
-        'password': ['', Validators.minLength(8)],
-        'Confirm': ['', Validators.minLength(8)]
+        'password': ['', Validators.minLength(8)]
       }
     );
   }
-
-
-
+  errMessage = "" ;
   ngOnInit() {
   }
-
-  onClickRegister(register) {
+  onClickRegister() {
+    this.authService.register(this.myGroup.value)
+      .subscribe((res) => {
+        if (res === true) {
+          this.router.navigateByUrl('');
+        } else {
+          this.errMessage = res;
+        }
+      });
 
   }
 }

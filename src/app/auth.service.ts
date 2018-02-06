@@ -10,7 +10,7 @@ export class AuthService {
 
 
   isLoggedIn() {
-    if (localStorage.getItem('login')) {
+    if (localStorage.getItem("token")) {
       console.log('return true');
       return true;
     } else {
@@ -22,26 +22,28 @@ export class AuthService {
   login(user) {
     return this.http.post('http://localhost:3000/auth/login', user)
       .map((res) => {
-        if (res.json().message === 'ok') {
-          this.saveSession();
+        if (res.json().message === "ok" ) {
+         const token = res.json().token ;
+          this.saveSession(token);
           return true;
-        } else {
+        } else {  
           return res.json().message;
         }
       });
   }
-  saveSession() {
-    localStorage.setItem('login', 'true');
+  saveSession(token) {
+    localStorage.setItem("token" ,  token);
   }
 
   logout() {
-    localStorage.removeItem('login');
+    localStorage.removeItem('token');
   }
 
   register(user) {
     return this.http.post('http://localhost:3000/auth/register', user)
       .map((res) => {
-        if (res.status === 200) { return true; } else { return res.json().message; }
+        const token = res.json().token ;
+        if (res.status === 200) { this.saveSession(token); return true; } else { return res.json().message; }
       });
   }
 }

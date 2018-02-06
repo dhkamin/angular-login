@@ -4,6 +4,7 @@ const auth = require('./server/routing/auth')
 const bodyparser = require('body-parser');
 const cors = require('cors');
 
+
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -17,7 +18,7 @@ app.use(express.static(__dirname+"/dist"))
 
 app.use('/auth',auth);
 
-app.get('*',(req,res)=>{
+app.get('*',(req,res,next)=>{
   res.sendFile(__dirname+'/dist/index.html');
 })
 

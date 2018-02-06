@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
-import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
 
 @Component({
@@ -27,7 +28,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  onClickLogin() {
+  onClickLogin(userForm) {
     this.authService.login(this.userForm.value)
       .subscribe((res) => {
         if (res === true) {
