@@ -12,16 +12,19 @@ const connection = (closure) =>{
   }
   
 router.post('/addTask',(req,res)=>{
+
+  
     connection((db)=>{
-      db.collection('users').findOne({email:req.body.email},(err,result)=>{
+      db.collection('users').findOne({"_id":ObjectID(req.body.id) },(err,result)=>{
+        console.log(result);
         if(err||!result) {res.send({message:"Error"})}
         else{
             db.collection('users').update(
-               { email : req.body.email},
-                {$push : { tasks: { $each: [{titre : "nom_task", description : "description", date : "date "}] } }
+               { "_id":ObjectID(req.body.id)},
+                {$push : { tasks: { $each: [{title: req.body.title, description: req.body.description, date: req.body.date, done: req.body.done}] } }
                }
             );
-          res.send({message:"Done"});
+            res.send({message:"Done"});
         }
       })
     })

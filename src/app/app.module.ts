@@ -14,6 +14,10 @@ import { AuthService } from './auth.service';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { TodolistComponent, TodoComponent } from './todolist/todolist.component';
+import { AddtodoComponent, FormtodoComponent } from './addtodo/addtodo.component';
+import { AuthHttp, AuthConfig,JwtHelper } from 'angular2-jwt';
+import { ListtodoService } from './listtodo.service';
 
 
 @NgModule({
@@ -22,6 +26,10 @@ import { HttpModule } from '@angular/http';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
+    TodolistComponent,
+    TodoComponent,
+    AddtodoComponent,
+    FormtodoComponent
 
   ],
   imports: [
@@ -34,7 +42,11 @@ import { HttpModule } from '@angular/http';
     ReactiveFormsModule,
     HttpModule
   ],
-  providers: [LoginGuardGuard, AuthService],
+  entryComponents: [ 
+    TodoComponent,
+    FormtodoComponent
+  ],
+  providers: [LoginGuardGuard, AuthService,ListtodoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
