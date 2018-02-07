@@ -1,0 +1,42 @@
+
+.dialog-container{
+    
+   
+  
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+
+
+.button-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    
+  }
+  .fiche-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 10;
+    padding-bottom: 10;
+    
+  }
+
+  button{
+      width: 35%;
+  }
+ 
+  h1{
+    width: 35%; 
+  }
+  
+mat-form-field{
+   width: 35%;
+ }

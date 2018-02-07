@@ -1,0 +1,39 @@
+
+    
+   
+<h1 mat-dialog-title>Todo</h1>
+
+
+<div mat-dialog-content  class="dialog-container" > 
+    <mat-form-field>
+       <input matInput placeholder="title todo"   [(ngModel)]="data.title" required>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Description" [(ngModel)]="data.description" required>
+     </mat-form-field>
+</div>
+<div mat-dialog-content class="fiche-row">
+    <h1 mat-dialog-title> title todo </h1>
+    <h1 mat-dialog-title> {{data.title}}</h1>
+ </div> 
+ <div mat-dialog-content class="fiche-row">
+    <h1 mat-dialog-title> Description</h1>
+    <h1 mat-dialog-title> {{data.description}}</h1>
+ </div> 
+
+ <div mat-dialog-content class="fiche-row">
+    <h1 mat-dialog-title> date creation</h1>
+    <h1 mat-dialog-title> {{data.date}}</h1>
+ </div> 
+
+
+<div mat-dialog-actions class="button-row">
+    <button mat-raised-button color="accent" (click)=" onNoClick()" >Cancel</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="data" cdkFocusInitial>Confirm</button>
+ </div> 
+   
+
+
+
+
+   
